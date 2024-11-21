@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 
-const API_URL = "https://kulturalbox-server.onrender.com/api/products";
+const API_URL = "https://kulturalbox-server.onrender.com/api/products/";
 
 // Homepage route
 router.get("/", async (req, res) => {
