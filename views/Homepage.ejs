@@ -55,7 +55,7 @@
         <div class="row g-5 align-items-center">
             <div class="col-md-12 col-lg-7">
                 <h4 style="color:#FE9801" class="mb-3">Quality Groceries Everywhere</h4>
-                <h1 style="color:#2D7B30;" class="mb-5 display-3">Welcome To FoodDeck</h1>
+                <h1 style="color:#2D7B30;" class="mb-5 display-3">Welcome To KulturalBox</h1>
             </div>
             <div class="col-md-12 col-lg-5">
                 <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
@@ -188,7 +188,7 @@
                             <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="card-img-top" style="height: 130px; padding: 2px;">
                             <div class="card-body" style="background-color:#FAFAFA; padding:7px; height:110px;">
                                 <p class="card-title mb-1" style="font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= product.name %></p>
-                                <p class="card-text mb-2" style="color: #FE9801;">&#8358;<%= product.price %></p>
+                                <p class="card-text mb-2" style="color: #FE9801;">$<%= product.price %></p>
                                 <form action="/cart/<%= product._id %>" method="post">
                                     <input type="hidden" name="id" value="<%= product._id %>">
                                     <input type="hidden" name="name" value="<%= product.name %>">
