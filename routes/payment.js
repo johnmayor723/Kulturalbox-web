@@ -103,7 +103,7 @@ const adminEmailOptions = {
         try {
             // Post order to external server
             const orderResponse = await axios.post(
-                'https://pantry-hub-server.onrender.com/api/orders',
+                'https://kulturalbox-server.onrender.com/api/orders',
                 orderPayload
             );
             console.log(orderResponse.data);  // Logging the response data
@@ -126,7 +126,7 @@ const adminEmailOptions = {
     const paystackData = {
         email,  
         amount: amount * 100,  // Amount in kobo
-        callback_url: 'https://fooddeck-web.onrender.com/payments/callback'
+        callback_url: ' https://kulturalbox-server.onrender.com/api/payments/callback'
     };
 
     try {
