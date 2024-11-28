@@ -1,6 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const nodemailer = require('nodemailer');
+
+ const mailer = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'fooddeck3@gmail.com',
+        pass: 'xyca sbvx hifi amzs',
+      },
+});
+
 
 const API_URL = "https://kulturalbox-server.onrender.com/api/products/";
 
@@ -111,6 +121,63 @@ router.get("/callback", (req, res) => {
 // privacy policy page route
 router.get("/helpcenter", (req, res) => {
   res.render("helpcenter", {title: "FAQ"});
+});
+router.post('/enquiries', async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'All fields (name, email, message) are required.' });
+  }
+
+  try {
+    // Send email to admin
+    const adminMailOptions = {
+      from: '"KulturalBox Contact Form" <no-reply@kulturalbox.com>',
+      to: 'fooddeck3@gmail.com',
+      subject: 'New Contact Form Submission',
+      html: `
+        <h3>New Message from Contact Form</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
+    };
+
+    // Acknowledge sender with a styled HTML email
+    const userMailOptions = {
+      from: '"KulturalBox Support" <no-reply@kulturalbox.com>',
+      to: email,
+      subject: 'Thanks for Contacting KulturalBox!',
+      html: `
+        <div style="font-family: Arial, sans-serif; border: 1px solid #ddd; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto;">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <img src="https://your-logo-url.com/logo.png" alt="KulturalBox Logo" style="max-width: 200px;">
+          </div>
+          <div>
+            <h2 style="color: #FE9801;">Hello, ${name}!</h2>
+            <p style="font-size: 16px; color: #333;">Thank you for reaching out to KulturalBox. We’ve received your message and will get back to you as soon as possible.</p>
+            <p style="font-size: 16px; color: #333;">Your Message:</p>
+            <blockquote style="font-size: 14px; font-style: italic; background: #f9f9f9; padding: 10px; border-left: 4px solid #FE9801; margin: 20px 0;">${message}</blockquote>
+          </div>
+          <footer style="text-align: center; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px; font-size: 14px; color: #666;">
+            <p>KulturalBox</p>
+            <p>The City Mall, Onikan, Lagos</p>
+            <p>Email: info@kulturalbox.com | Phone: +234 912 390 7060</p>
+            <p>Website: <a href="https://www.kulturalbox.com" style="color: #FE9801;">www.kulturalbox.com</a></p>
+          </footer>
+        </div>
+      `,
+    };
+
+    // Assuming `mailer` is your configured mailing service
+    await mailer.sendMail(adminMailOptions);
+    await mailer.sendMail(userMailOptions);
+
+    res.status(200).json({ success: 'Message sent successfully!' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while sending the message.' });
+  }
 });
 
 
