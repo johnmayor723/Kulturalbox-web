@@ -151,7 +151,7 @@ router.post('/enquiries', async (req, res) => {
       html: `
         <div style="font-family: Arial, sans-serif; border: 1px solid #ddd; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto;">
           <div style="text-align: center; margin-bottom: 20px;">
-            <img src="https://your-logo-url.com/logo.png" alt="KulturalBox Logo" style="max-width: 200px;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/fooddeck-fc840.appspot.com/o/Logo12.png?alt=media&token=56208343-49c1-4664-853f-68e904b1eb7c " alt="KulturalBox Logo" style="max-width: 200px;">
           </div>
           <div>
             <h2 style="color: #FE9801;">Hello, ${name}!</h2>
