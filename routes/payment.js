@@ -150,7 +150,7 @@ const adminEmailOptions = {
             try {
                 // Post order to external server
                 const orderResponse = await axios.post(
-                    'https://pantry-hub-server.onrender.com/api/orders',
+                    'http://kulturalbox.com.ng/api/orders',
                     orderPayload
                 );
                 console.log(orderResponse.data);  // Logging the response data
