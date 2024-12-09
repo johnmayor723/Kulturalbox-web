@@ -12,7 +12,7 @@ const nodemailer = require('nodemailer');
 });
 
 
-const API_URL = "https://kulturalbox-server.onrender.com/api/products/";
+const API_URL = "http://kulturalbox.com.ng/api/products/";
 
 // Homepage route
 router.get("/", async (req, res) => {
