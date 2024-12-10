@@ -103,7 +103,7 @@ const adminEmailOptions = {
         try {
             // Post order to external server
             const orderResponse = await axios.post(
-                'https://kulturalbox-server.onrender.com/api/orders',
+                'http://api.kulturalbox.com.ng/api/orders',
                 orderPayload
             );
             console.log(orderResponse.data);  // Logging the response data
@@ -126,7 +126,7 @@ const adminEmailOptions = {
     const paystackData = {
         email,  
         amount: amount * 100,  // Amount in kobo
-        callback_url: ' https://kulturalbox-server.onrender.com/api/payments/callback'
+        callback_url: ' http://api.kulturalbox.com.ng/api/payments/callback'
     };
 
     try {
@@ -150,7 +150,7 @@ const adminEmailOptions = {
             try {
                 // Post order to external server
                 const orderResponse = await axios.post(
-                    'http://kulturalbox.com.ng/api/orders',
+                    'http://api.kulturalbox.com.ng/api/orders',
                     orderPayload
                 );
                 console.log(orderResponse.data);  // Logging the response data
